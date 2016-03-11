@@ -1,18 +1,37 @@
 <html>
-  {% block head %}
-  <head>
-    <link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
-    <link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
-    {% if title %}
-    <title>{{ title }} - flask tutorial</title>
-    {% else %}
-    <title>Welcome to flask</title>
-    {% endif %}
-  </head>
-  {% endblock %}
-  <body>
-    <div>Flask tutorial <a href="/index">Home</a></div>
-    <hr>
-    {% block content %}{% endblock %}
-  </body>
+{% extends "bootstrap/base.html" %}
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename = 'favicon.ico') }}" type="image/x-icon">
+{% endblock %}
+{% block title %}Flask Tutorial{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+            data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        <a class="navbar-brand" href="/">Flask Tutorial</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li><a href="/">Home</a></li>
+                <li><a href="/login">Log in</a></li>
+                <li><a href="/signin">Sign in</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+
+{% endblock %}
+
 </html>
