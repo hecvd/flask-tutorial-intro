@@ -1,10 +1,22 @@
 from app import app
+from flask import render_template, url_for
 
 @app.route('/')
 @app.route('/index')
 def index():
-    return '<h1>Hello World!</h1>'
+  user = {'nickname': 'hector'}  # fake user
+  posts = [  # fake array of posts
+      { 
+          'author': {'nickname': 'Coba'}, 
+          'body': 'Bajenle 2 rayitas' 
+      },
+      { 
+          'author': {'nickname': 'Fru'}, 
+          'body': 'Hice CaFru!' 
+      }
+  ]
+  return render_template('index.html', title='Home', user=user, posts=posts)
   
 @app.route('/user/<name>')
 def user(name):
-    return '<h1>Hello, %s!</h1>' % name
+    return render_template('user.html', name=name)
