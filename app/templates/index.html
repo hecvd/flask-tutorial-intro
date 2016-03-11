@@ -4,6 +4,10 @@
 {% endblock %}
 
 {% block content %}
+    <h1>Hi, {{ user.nickname }}!</h1>
+    {% for post in posts %}
+    <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
+    {% endfor %}
     <div class="container">
         {% for message in get_flashed_messages() %}
             <div class="alert alert-warning">
@@ -12,8 +16,4 @@
             </div>
         {% endfor %}
     </div>
-    <h1>Hie, {{ user.nickname }}!</h1>
-    {% for post in posts %}
-    <div><p>{{ post.author.nickname }} says: <b>{{ post.body }}</b></p></div>
-    {% endfor %}
 {% endblock %}

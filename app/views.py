@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from app import app
 from flask import render_template, url_for, flash, redirect
-from forms import LoginForm, SignInForm
+from forms import LoginForm, SignInForm, NameForm
 
 @app.route('/')
 @app.route('/index')
@@ -20,8 +20,12 @@ def index():
     return render_template('index.html', title='Home', user=user, posts=posts)
 
 @app.route('/user/<name>')
-def user(name):
-    return render_template('user.html', name=name)
+@app.route('/user', methods=['GET', 'POST'])
+def user(name=None):
+    form = NameForm()
+    if form.name.data:
+        name = form.name.data
+    return render_template('user.html', name=name, form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
