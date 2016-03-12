@@ -1,0 +1,24 @@
+<!-- extend from base layout -->
+{% extends "base.html" %}
+
+{% block head %}
+{{ super() }}
+<link href="{{ url_for('static', filename = 'signin.css') }}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+    <div class="container">
+
+      <form class="form-signin" type="POST">
+        <h2 class="form-signin-heading">Please sign in</h2>
+        {{ form.hidden_tag() if form.hidden_tag }}
+        <label for="{{ form.email.id }}" class="sr-only">Email address</label>
+        {{ form.email(class="form-control", placeholder="Email address") }}
+        <label for="{{ form.password.id }}" class="sr-only">Password</label>
+        {{ form.password(class="form-control", placeholder="Password") }}
+        <label for="{{ form.confirm.id }}" class="sr-only">Password</label>
+        {{ form.confirm(class="form-control", placeholder="Confirm Password") }}
+        <button class="btn btn-lg btn-primary btn-block" type="post">Sign in</button>
+      </form>
+    </div>
+  </body>
+{% endblock %}
